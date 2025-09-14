@@ -905,10 +905,17 @@ async def root():
 # Statische Dateien für Frontend
 static_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "../frontend/dist"))
 expo_static_path = os.path.join(static_path, "_expo")
+assets_path = os.path.join(static_path, "assets")
+
 if os.path.exists(expo_static_path):
     # Mount _expo directory to /_expo path
-    app.mount("/_expo", StaticFiles(directory=expo_static_path), name="static")
-    print(f"✅ Static files mounted from: {expo_static_path}")
+    app.mount("/_expo", StaticFiles(directory=expo_static_path), name="expo_static")
+    print(f"✅ Expo static files mounted from: {expo_static_path}")
+
+if os.path.exists(assets_path):
+    # Mount assets directory to /assets path
+    app.mount("/assets", StaticFiles(directory=assets_path), name="assets")
+    print(f"✅ Assets mounted from: {assets_path}")
 
 # Root route - serviert Frontend oder JSON
 @app.get("/")
