@@ -547,14 +547,18 @@ const IncidentMapModal = ({ visible, onClose, incident }) => {
           <View style={{ width: 40 }} />
         </View>
 
-        <View style={dynamicStyles.mapContainer}>
+        <TouchableOpacity 
+          style={dynamicStyles.mapContainer}
+          onPress={() => handleCompleteIncident(incident)}
+          activeOpacity={0.7}
+        >
           <View style={dynamicStyles.webMapContainer}>
-            <Ionicons name="map" size={64} color={colors.textMuted} />
+            <Ionicons name="checkmark-circle" size={64} color={colors.success} />
             <Text style={dynamicStyles.mapPlaceholder}>
-              🗺️ Karten-Ansicht{'\n'}(In nativer App verfügbar)
+              ✅ Vorfall erledigen{'\n'}(Antippen zum Abschließen)
             </Text>
           </View>
-        </View>
+        </TouchableOpacity>
 
         {incident && (
           <View style={dynamicStyles.incidentInfo}>
