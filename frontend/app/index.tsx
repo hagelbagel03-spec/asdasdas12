@@ -1790,6 +1790,23 @@ const MainApp = () => {
       fontWeight: '700',
       marginLeft: 8,
     },
+    quickLoginButton: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'center',
+      backgroundColor: 'rgba(255, 255, 255, 0.2)',
+      paddingVertical: 16,
+      borderRadius: 12,
+      marginTop: 16,
+      borderWidth: 2,
+      borderColor: 'rgba(255, 255, 255, 0.4)',
+    },
+    quickLoginText: {
+      color: '#FFFFFF',
+      fontSize: 16,
+      fontWeight: '600',
+      marginLeft: 8,
+    },
   });
 
   const renderHomeScreen = () => (
