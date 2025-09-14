@@ -23,6 +23,7 @@ import axios from 'axios';
 // Map functionality disabled for web compatibility
 import AddUserModal from './components/AddUserModal';
 import RealTimeMessages from './components/RealTimeMessages';
+import GoogleMapsView from './components/GoogleMapsView';
 
 const { width, height } = Dimensions.get('window');
 
