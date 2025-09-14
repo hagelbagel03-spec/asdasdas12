@@ -1208,6 +1208,14 @@ const MainApp = () => {
       alignItems: 'center',
       gap: 8,
     },
+    mapButton: {
+      backgroundColor: colors.primary,
+      borderRadius: 16,
+      width: 32,
+      height: 32,
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
     deleteButton: {
       backgroundColor: colors.success,
       borderRadius: 16,
