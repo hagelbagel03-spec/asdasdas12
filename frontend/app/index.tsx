@@ -1224,6 +1224,27 @@ const MainApp = () => {
       justifyContent: 'center',
       alignItems: 'center',
     },
+    reportActions: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      gap: 8,
+    },
+    editButton: {
+      backgroundColor: colors.primary,
+      borderRadius: 16,
+      width: 32,
+      height: 32,
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+    deleteReportButton: {
+      backgroundColor: colors.error,
+      borderRadius: 16,
+      width: 32,
+      height: 32,
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
     
     // Action Buttons
     actionButton: {
