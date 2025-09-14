@@ -429,6 +429,26 @@ async def create_report(report_data: ReportCreate, current_user: User = Depends(
     
     return report_obj
 
+@api_router.delete("/reports/{report_id}")
+async def delete_report(report_id: str, current_user: User = Depends(get_current_user)):
+    """Delete a report"""
+    # Find the report
+    report = await db.reports.find_one({"id": report_id})
+    if not report:
+        raise HTTPException(status_code=404, detail="Report not found")
+    
+    # Check if user owns the report or is admin
+    if report["author_id"] != current_user.id and current_user.role != UserRole.ADMIN:
+        raise HTTPException(status_code=403, detail="Not authorized to delete this report")
+    
+    # Delete the report
+    result = await db.reports.delete_one({"id": report_id})
+    
+    if result.deleted_count == 0:
+        raise HTTPException(status_code=404, detail="Report not found")
+    
+    return {"status": "success", "message": "Report deleted"}
+
 @api_router.get("/reports", response_model=List[Report])
 async def get_reports(current_user: User = Depends(get_current_user)):
     if current_user.role == UserRole.ADMIN:
