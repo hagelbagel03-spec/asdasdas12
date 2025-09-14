@@ -654,7 +654,8 @@ async def send_message(message_data: MessageCreate, current_user: User = Depends
     message_dict = message_data.dict()
     message_dict['sender_id'] = current_user.id
     message_dict['sender_name'] = current_user.username  # Add sender name
-    message_dict['created_at'] = datetime.utcnow()  # Add timestamp
+    message_dict['timestamp'] = datetime.utcnow()  # Add timestamp
+    message_dict['created_at'] = datetime.utcnow()  # Add created_at for compatibility
     message_obj = Message(**message_dict)
     
     await db.messages.insert_one(message_obj.dict())
