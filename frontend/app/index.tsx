@@ -1111,9 +1111,9 @@ const MainApp = () => {
       gap: 12,
     },
     headerButton: {
-      width: 44,
-      height: 44,
-      borderRadius: 22,
+      width: 32,
+      height: 32,
+      borderRadius: 16,
       backgroundColor: 'rgba(255, 255, 255, 0.2)',
       justifyContent: 'center',
       alignItems: 'center',
