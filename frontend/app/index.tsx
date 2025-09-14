@@ -2351,11 +2351,35 @@ const MainApp = () => {
                       </Text>
                     )}
                   </View>
-                  <View>
-                    <Ionicons name="create" size={20} color={colors.textMuted} />
-                    <Text style={[dynamicStyles.incidentTime, { fontSize: 10, marginTop: 4 }]}>
-                      Bearbeiten
-                    </Text>
+                  <View style={dynamicStyles.reportActions}>
+                    <TouchableOpacity 
+                      style={dynamicStyles.editButton}
+                      onPress={(e) => {
+                        e.stopPropagation();
+                        editReport(report);
+                      }}
+                    >
+                      <Ionicons name="create" size={18} color="#FFFFFF" />
+                    </TouchableOpacity>
+                    <TouchableOpacity 
+                      style={dynamicStyles.deleteReportButton}
+                      onPress={async (e) => {
+                        e.stopPropagation();
+                        try {
+                          const config = token ? {
+                            headers: { Authorization: `Bearer ${token}` }
+                          } : {};
+                          
+                          await axios.delete(`${API_URL}/api/reports/${report.id}`, config);
+                          await loadReports(); // Liste neu laden
+                          
+                        } catch (error) {
+                          console.error('Fehler beim Löschen des Berichts:', error);
+                        }
+                      }}
+                    >
+                      <Ionicons name="trash" size={18} color="#FFFFFF" />
+                    </TouchableOpacity>
                   </View>
                 </TouchableOpacity>
               ))}
