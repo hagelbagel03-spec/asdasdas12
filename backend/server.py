@@ -906,6 +906,7 @@ async def root():
 static_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "../frontend/dist"))
 expo_static_path = os.path.join(static_path, "_expo")
 assets_path = os.path.join(static_path, "assets")
+fonts_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "../frontend/node_modules/@expo/vector-icons/build/vendor/react-native-vector-icons/Fonts"))
 
 if os.path.exists(expo_static_path):
     # Mount _expo directory to /_expo path
@@ -913,9 +914,14 @@ if os.path.exists(expo_static_path):
     print(f"✅ Expo static files mounted from: {expo_static_path}")
 
 if os.path.exists(assets_path):
-    # Mount assets directory to /assets path
+    # Mount assets directory to /assets path  
     app.mount("/assets", StaticFiles(directory=assets_path), name="assets")
     print(f"✅ Assets mounted from: {assets_path}")
+
+if os.path.exists(fonts_path):
+    # Mount fonts for icons
+    app.mount("/assets/node_modules/@expo/vector-icons/build/vendor/react-native-vector-icons/Fonts", StaticFiles(directory=fonts_path), name="fonts")
+    print(f"✅ Icon fonts mounted from: {fonts_path}")
 
 # Root route - serviert Frontend oder JSON
 @app.get("/")
