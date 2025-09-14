@@ -549,7 +549,10 @@ const IncidentMapModal = ({ visible, onClose, incident }) => {
 
         <TouchableOpacity 
           style={dynamicStyles.mapContainer}
-          onPress={() => handleCompleteIncident(incident)}
+          onPress={() => {
+            setSelectedIncident(incident);
+            completeIncident();
+          }}
           activeOpacity={0.7}
         >
           <View style={dynamicStyles.webMapContainer}>
