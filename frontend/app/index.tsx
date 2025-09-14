@@ -1108,7 +1108,7 @@ const MainApp = () => {
     headerButtons: {
       flexDirection: 'row',
       alignItems: 'center',
-      gap: 12,
+      gap: 8,
     },
     headerButton: {
       width: 32,
