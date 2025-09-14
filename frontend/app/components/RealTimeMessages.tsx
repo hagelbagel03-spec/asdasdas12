@@ -249,12 +249,12 @@ const RealTimeMessages: React.FC<RealTimeMessagesProps> = ({ user, token, select
     channelTab: {
       flexDirection: 'row',
       alignItems: 'center',
-      paddingHorizontal: 12,
-      paddingVertical: 6,
-      borderRadius: 16,
-      marginRight: 8,
+      paddingHorizontal: 8,
+      paddingVertical: 4,
+      borderRadius: 12,
+      marginRight: 6,
       backgroundColor: colors.card,
-      borderWidth: 2,
+      borderWidth: 1,
       borderColor: 'transparent',
     },
     channelTabActive: {
