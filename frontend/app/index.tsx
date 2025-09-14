@@ -1934,7 +1934,28 @@ const MainApp = () => {
                                '❓ ' + (incident.priority || 'Unbekannt')}
                   </Text>
                 </View>
-                <Ionicons name="chevron-forward" size={20} color={colors.textMuted} />
+                <View style={dynamicStyles.incidentActions}>
+                  <TouchableOpacity 
+                    style={dynamicStyles.deleteButton}
+                    onPress={async (e) => {
+                      e.stopPropagation(); // Verhindert das Öffnen des Vorfalls
+                      try {
+                        const config = token ? {
+                          headers: { Authorization: `Bearer ${token}` }
+                        } : {};
+                        
+                        await axios.put(`${API_URL}/api/incidents/${incident.id}/complete`, {}, config);
+                        await loadData(); // Liste neu laden
+                        
+                      } catch (error) {
+                        console.error('Fehler beim Löschen:', error);
+                      }
+                    }}
+                  >
+                    <Ionicons name="checkmark-circle" size={18} color="#FFFFFF" />
+                  </TouchableOpacity>
+                  <Ionicons name="chevron-forward" size={20} color={colors.textMuted} />
+                </View>
               </TouchableOpacity>
             ))}
           </>
