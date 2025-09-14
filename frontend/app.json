@@ -1,12 +1,13 @@
 {
   "expo": {
     "name": "Stadtwache",
-    "slug": "stadtwache-schwelm",
+    "slug": "stadtwache-schwelm", 
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "scheme": "stadtwache",
     "userInterfaceStyle": "automatic",
+    "owner": "stadtwache-schwelm",
     "description": "Sicherheitsbehörde Schwelm - Professional Security Solution",
     "primaryColor": "#1E3A8A",
     "splash": {
