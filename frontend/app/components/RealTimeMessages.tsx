@@ -581,7 +581,7 @@ const RealTimeMessages: React.FC<RealTimeMessagesProps> = ({ user, token, select
                       dynamicStyles.messageTime,
                       isMine ? dynamicStyles.myMessageTime : dynamicStyles.otherMessageTime
                     ]}>
-                      {formatTime(message.created_at)}
+                      {formatTime(message.timestamp || message.created_at)}
                     </Text>
                   </View>
                 </View>
