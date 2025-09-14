@@ -904,10 +904,11 @@ async def root():
 
 # Statische Dateien für Frontend
 static_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "../frontend/dist"))
-if os.path.exists(static_path):
-    # Mount all static files under _expo path
-    app.mount("/_expo", StaticFiles(directory=static_path), name="static")
-    print(f"✅ Static files mounted from: {static_path}")
+expo_static_path = os.path.join(static_path, "_expo")
+if os.path.exists(expo_static_path):
+    # Mount _expo directory to /_expo path
+    app.mount("/_expo", StaticFiles(directory=expo_static_path), name="static")
+    print(f"✅ Static files mounted from: {expo_static_path}")
 
 # Root route - serviert Frontend oder JSON
 @app.get("/")
