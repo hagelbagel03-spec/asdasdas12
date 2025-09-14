@@ -1827,24 +1827,24 @@ const MainApp = () => {
         </View>
       </View>
 
-      {/* Admin Quick Actions - IMMER SICHTBAR FÜR DEMO */}
-      <View style={dynamicStyles.card}>
-        <View style={dynamicStyles.cardHeader}>
-          <Ionicons name="shield-checkmark" size={24} color={colors.primary} />
-          <Text style={dynamicStyles.cardTitle}>
-            {user?.role === 'admin' ? 'Admin Bereich' : 'Demo Admin Funktionen'}
-          </Text>
+      {/* Admin Quick Actions - NUR FÜR ADMINS */}
+      {user?.role === 'admin' && (
+        <View style={dynamicStyles.card}>
+          <View style={dynamicStyles.cardHeader}>
+            <Ionicons name="shield-checkmark" size={24} color={colors.primary} />
+            <Text style={dynamicStyles.cardTitle}>Admin Bereich</Text>
+          </View>
+          <TouchableOpacity 
+            style={dynamicStyles.actionButton}
+            onPress={() => setShowAddUserModal(true)}
+            accessible={true}
+            accessibilityLabel="Neuen Benutzer hinzufügen"
+          >
+            <Ionicons name="person-add" size={20} color="#FFFFFF" />
+            <Text style={dynamicStyles.actionText}>Neuen Benutzer hinzufügen</Text>
+          </TouchableOpacity>
         </View>
-        <TouchableOpacity 
-          style={dynamicStyles.actionButton}
-          onPress={() => setShowAddUserModal(true)}
-          accessible={true}
-          accessibilityLabel="Neuen Benutzer hinzufügen"
-        >
-          <Ionicons name="person-add" size={20} color="#FFFFFF" />
-          <Text style={dynamicStyles.actionText}>Neuen Benutzer hinzufügen</Text>
-        </TouchableOpacity>
-      </View>
+      )}
 
       {/* Current Incidents - FIXED VERSION */}
       <View style={dynamicStyles.card}>
