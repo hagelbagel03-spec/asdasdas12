@@ -424,22 +424,6 @@ const LoginScreen = () => {
             )}
           </TouchableOpacity>
 
-          <TouchableOpacity
-            style={[dynamicStyles.quickLoginButton, loading && dynamicStyles.loginButtonDisabled]}
-            onPress={handleQuickLogin}
-            disabled={loading}
-            activeOpacity={0.8}
-          >
-            {loading ? (
-              <ActivityIndicator color="#FFFFFF" size="small" />
-            ) : (
-              <>
-                <Ionicons name="flash" size={20} color="#FFFFFF" />
-                <Text style={dynamicStyles.quickLoginText}>Schnell-Anmeldung</Text>
-              </>
-            )}
-          </TouchableOpacity>
-
 
         </View>
 
