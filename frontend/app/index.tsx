@@ -126,7 +126,7 @@ const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  const API_URL = process.env.EXPO_PUBLIC_BACKEND_URL;
+  const API_URL = "http://212.227.57.238:8001";
 
   useEffect(() => {
     checkAuthState();
@@ -632,7 +632,7 @@ const MainApp = () => {
   const [usersByStatus, setUsersByStatus] = useState({});
   const [teamLoading, setTeamLoading] = useState(false);
   
-  const API_URL = process.env.EXPO_PUBLIC_BACKEND_URL;
+  const API_URL = "http://212.227.57.238:8001";
   
   useEffect(() => {
     loadData();
