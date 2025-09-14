@@ -66,7 +66,7 @@
       "eas": {
         "projectId": "stadtwache-schwelm-2024"
       },
-      "serverUrl": "http://212.227.57.238:8001"
+      "serverUrl": "http://212.227.57.238:3000"
     }
   }
 }
