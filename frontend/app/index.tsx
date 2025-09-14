@@ -547,14 +547,7 @@ const IncidentMapModal = ({ visible, onClose, incident }) => {
           <View style={{ width: 40 }} />
         </View>
 
-        <View style={dynamicStyles.mapContainer}>
-          <View style={dynamicStyles.webMapContainer}>
-            <Ionicons name="map" size={64} color={colors.textMuted} />
-            <Text style={dynamicStyles.mapPlaceholder}>
-              🗺️ Karten-Ansicht{'\n'}(In nativer App verfügbar)
-            </Text>
-          </View>
-        </View>
+        <GoogleMapsView incident={incident} user={user} token={token} />
 
         {incident && (
           <View style={dynamicStyles.incidentInfo}>
