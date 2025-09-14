@@ -1949,6 +1949,16 @@ const MainApp = () => {
                 </View>
                 <View style={dynamicStyles.incidentActions}>
                   <TouchableOpacity 
+                    style={dynamicStyles.mapButton}
+                    onPress={(e) => {
+                      e.stopPropagation();
+                      // Öffne Karten-Ansicht für diesen Vorfall
+                      openIncidentDetails(incident);
+                    }}
+                  >
+                    <Ionicons name="map" size={18} color="#FFFFFF" />
+                  </TouchableOpacity>
+                  <TouchableOpacity 
                     style={dynamicStyles.deleteButton}
                     onPress={async (e) => {
                       e.stopPropagation(); // Verhindert das Öffnen des Vorfalls
