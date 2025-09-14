@@ -547,8 +547,18 @@ const IncidentMapModal = ({ visible, onClose, incident }) => {
           <View style={{ width: 40 }} />
         </View>
 
+        <View style={dynamicStyles.mapContainer}>
+          <View style={dynamicStyles.webMapContainer}>
+            <Ionicons name="map" size={64} color={colors.textMuted} />
+            <Text style={dynamicStyles.mapPlaceholder}>
+              🗺️ Karten-Ansicht{'\n'}(In nativer App verfügbar)
+            </Text>
+          </View>
+        </View>
+
+        {/* Erledigt Button */}
         <TouchableOpacity 
-          style={dynamicStyles.mapContainer}
+          style={dynamicStyles.completeButton}
           onPress={async () => {
             try {
               const config = token ? {
@@ -568,12 +578,8 @@ const IncidentMapModal = ({ visible, onClose, incident }) => {
           }}
           activeOpacity={0.7}
         >
-          <View style={dynamicStyles.webMapContainer}>
-            <Ionicons name="checkmark-circle" size={64} color={colors.success} />
-            <Text style={dynamicStyles.mapPlaceholder}>
-              ✅ Vorfall erledigen{'\n'}(Antippen zum Löschen)
-            </Text>
-          </View>
+          <Ionicons name="checkmark-circle" size={24} color="#FFFFFF" />
+          <Text style={dynamicStyles.completeButtonText}>✅ Vorfall erledigt</Text>
         </TouchableOpacity>
 
         {incident && (
