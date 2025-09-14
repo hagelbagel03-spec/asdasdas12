@@ -902,10 +902,19 @@ async def reset_database():
 async def root():
     return {"message": "Stadtwache API", "version": "1.0.0"}
 
-# Root route
+# Statische Dateien für Frontend
+static_path = "../frontend/dist"
+if os.path.exists(static_path):
+    app.mount("/static", StaticFiles(directory=static_path), name="static")
+
+# Root route - serviert Frontend oder JSON
 @app.get("/")
 async def root():
-    return {"message": "Stadtwache Server", "version": "1.0.0", "status": "running"}
+    static_index = "../frontend/dist/index.html"
+    if os.path.exists(static_index):
+        return FileResponse(static_index)
+    else:
+        return {"message": "Stadtwache Server", "version": "1.0.0", "status": "running"}
 
 # Include router
 app.include_router(api_router)
