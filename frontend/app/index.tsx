@@ -231,6 +231,17 @@ const LoginScreen = () => {
     }
   };
 
+  const handleQuickLogin = async () => {
+    setLoading(true);
+    // Standard Login für Stadtwache-Beamte
+    const result = await login('beamter@stadtwache.de', 'stadtwache2024');
+    setLoading(false);
+
+    if (!result.success) {
+      Alert.alert('Server nicht erreichbar', 'Verbindung zu 212.227.57.238:8001 fehlgeschlagen');
+    }
+  };
+
   const dynamicStyles = StyleSheet.create({
     container: {
       flex: 1,
