@@ -202,7 +202,15 @@ const RealTimeMessages: React.FC<RealTimeMessagesProps> = ({ user, token, select
   };
 
   const formatTime = (dateString: string) => {
+    if (!dateString) return 'Jetzt';
+    
     const date = new Date(dateString);
+    
+    // Check if date is valid
+    if (isNaN(date.getTime())) {
+      return 'Jetzt';
+    }
+    
     const now = new Date();
     const diffMs = now.getTime() - date.getTime();
     const diffMins = Math.floor(diffMs / 60000);
