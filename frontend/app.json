@@ -67,6 +67,9 @@
         "projectId": "stadtwache-schwelm-2024"
       },
       "serverUrl": "http://212.227.57.238:3000"
+    },
+    "developmentClient": {
+      "silentLaunch": true
     }
   }
 }
