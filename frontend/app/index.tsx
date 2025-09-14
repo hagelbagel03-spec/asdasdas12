@@ -1203,6 +1203,19 @@ const MainApp = () => {
       fontWeight: '600',
       textTransform: 'uppercase',
     },
+    incidentActions: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      gap: 8,
+    },
+    deleteButton: {
+      backgroundColor: colors.success,
+      borderRadius: 16,
+      width: 32,
+      height: 32,
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
     
     // Action Buttons
     actionButton: {
