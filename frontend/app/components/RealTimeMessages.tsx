@@ -201,12 +201,36 @@ const RealTimeMessages: React.FC<RealTimeMessagesProps> = ({ user, token, select
     setRefreshing(false);
   };
 
-  const formatTime = (dateString: string) => {
-    if (!dateString) return 'Jetzt';
+  const formatTime = (dateString: string | undefined | null) => {
+    if (!dateString) {
+      // Fallback auf aktuelles Datum
+      return 'Jetzt';
+    }
     
-    const date = new Date(dateString);
+    let date: Date;
     
-    // Check if date is valid
+    // Verschiedene Datums-Formate probieren
+    if (typeof dateString === 'string') {
+      // ISO String probieren
+      date = new Date(dateString);
+      
+      // Falls ungültig, andere Formate probieren
+      if (isNaN(date.getTime())) {
+        // Unix Timestamp probieren (falls es ein String mit Zahlen ist)
+        const timestamp = parseInt(dateString);
+        if (!isNaN(timestamp)) {
+          date = new Date(timestamp);
+        } else {
+          // Fallback
+          console.warn('Invalid date string:', dateString);
+          return 'Jetzt';
+        }
+      }
+    } else {
+      return 'Jetzt';
+    }
+    
+    // Final check
     if (isNaN(date.getTime())) {
       return 'Jetzt';
     }
