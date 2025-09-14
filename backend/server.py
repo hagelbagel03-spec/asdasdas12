@@ -60,7 +60,7 @@ user_sockets = {}  # {socket_id: user_id}
 
 # Create FastAPI app
 app = FastAPI()
-api_router = APIRouter()  # Kein Prefix mehr
+api_router = APIRouter(prefix="/api")
 
 # Wrap FastAPI app with Socket.IO
 socket_app = socketio.ASGIApp(sio, app)
