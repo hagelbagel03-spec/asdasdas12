@@ -556,32 +556,6 @@ const IncidentMapModal = ({ visible, onClose, incident }) => {
           </View>
         </View>
 
-        {/* Erledigt Button */}
-        <TouchableOpacity 
-          style={dynamicStyles.completeButton}
-          onPress={async () => {
-            try {
-              const config = token ? {
-                headers: { Authorization: `Bearer ${token}` }
-              } : {};
-              
-              await axios.put(`${API_URL}/api/incidents/${incident.id}/complete`, {}, config);
-              
-              // Zurück zur Vorfälle-Liste
-              setShowIncidentModal(false);
-              setSelectedIncident(null);
-              await loadData();
-              
-            } catch (error) {
-              console.error('Fehler beim Abschließen:', error);
-            }
-          }}
-          activeOpacity={0.7}
-        >
-          <Ionicons name="checkmark-circle" size={24} color="#FFFFFF" />
-          <Text style={dynamicStyles.completeButtonText}>✅ Vorfall erledigt</Text>
-        </TouchableOpacity>
-
         {incident && (
           <View style={dynamicStyles.incidentInfo}>
             <Text style={dynamicStyles.incidentTitle}>{incident.title}</Text>
