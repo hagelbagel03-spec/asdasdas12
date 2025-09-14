@@ -900,6 +900,11 @@ async def reset_database():
 async def root():
     return {"message": "Stadtwache API", "version": "1.0.0"}
 
+# Root route
+@app.get("/")
+async def root():
+    return {"message": "Stadtwache Server", "version": "1.0.0", "status": "running"}
+
 # Include router
 app.include_router(api_router)
 
