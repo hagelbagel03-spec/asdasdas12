@@ -903,14 +903,16 @@ async def root():
     return {"message": "Stadtwache API", "version": "1.0.0"}
 
 # Statische Dateien für Frontend
-static_path = "../frontend/dist"
+static_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "../frontend/dist"))
 if os.path.exists(static_path):
-    app.mount("/static", StaticFiles(directory=static_path), name="static")
+    # Mount all static files under _expo path
+    app.mount("/_expo", StaticFiles(directory=static_path), name="static")
+    print(f"✅ Static files mounted from: {static_path}")
 
 # Root route - serviert Frontend oder JSON
 @app.get("/")
 async def root():
-    static_index = "../frontend/dist/index.html"
+    static_index = os.path.join(static_path, "index.html")
     if os.path.exists(static_index):
         return FileResponse(static_index)
     else:
