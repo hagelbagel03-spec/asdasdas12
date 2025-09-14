@@ -428,7 +428,7 @@ const LoginScreen = () => {
         <View style={dynamicStyles.footer}>
           <Text style={dynamicStyles.footerText}>Stadtwache Schwelm</Text>
           <Text style={dynamicStyles.footerSubtext}>
-            Sichere Verbindung • Server: 212.227.57.238
+            Sichere Verbindung • Server: 212.227.57.238:8001
           </Text>
         </View>
 
