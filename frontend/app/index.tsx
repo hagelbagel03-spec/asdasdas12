@@ -549,16 +549,29 @@ const IncidentMapModal = ({ visible, onClose, incident }) => {
 
         <TouchableOpacity 
           style={dynamicStyles.mapContainer}
-          onPress={() => {
-            setSelectedIncident(incident);
-            completeIncident();
+          onPress={async () => {
+            try {
+              const config = token ? {
+                headers: { Authorization: `Bearer ${token}` }
+              } : {};
+              
+              await axios.put(`${API_URL}/api/incidents/${incident.id}/complete`, {}, config);
+              
+              // Zurück zur Vorfälle-Liste
+              setShowIncidentModal(false);
+              setSelectedIncident(null);
+              await loadData();
+              
+            } catch (error) {
+              console.error('Fehler beim Abschließen:', error);
+            }
           }}
           activeOpacity={0.7}
         >
           <View style={dynamicStyles.webMapContainer}>
             <Ionicons name="checkmark-circle" size={64} color={colors.success} />
             <Text style={dynamicStyles.mapPlaceholder}>
-              ✅ Vorfall erledigen{'\n'}(Antippen zum Abschließen)
+              ✅ Vorfall erledigen{'\n'}(Antippen zum Löschen)
             </Text>
           </View>
         </TouchableOpacity>
