@@ -51,7 +51,7 @@ if [ $? -eq 0 ]; then
     echo "📱 Die APK kann jetzt heruntergeladen und installiert werden."
     echo "🔗 Server: 212.227.57.238:8001"
     echo ""
-    echo "👥 Standard-Anmeldung:"
+    echo "👥 Anmeldedaten für Beamte:"
     echo "   E-Mail: beamter@stadtwache.de"
     echo "   Passwort: stadtwache2024"
     echo ""
